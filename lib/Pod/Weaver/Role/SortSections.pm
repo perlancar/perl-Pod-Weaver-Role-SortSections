@@ -6,18 +6,11 @@ package Pod::Weaver::Role::SortSections;
 use 5.010001;
 use Moose::Role;
 
-#use Pod::Elemental;
 use Pod::Elemental::Element::Nested;
 use Sort::BySpec qw(sort_by_spec);
 
 sub sort_sections {
     my ($self, $document, $spec) = @_;
-
-    # this comment is from the old code, i'm keeping it here in case i need it
-    #
-    # sometimes we get a Pod::Elemental::Element::Pod5::Command (e.g. empty
-    # "=head1 DESCRIPTION") instead of a Pod::Elemental::Element::Nested. in
-    # that case, just ignore it.
 
     # cluster document's top-level children into clusters of headlines, where
     # the first element of each cluster is a head1. we are going to sort the
